@@ -3,14 +3,14 @@ from pprint import pprint
 
 class WordsFinder:
 
-    def __init__(self, file_name):
+    def __init__(self, *file_name):
         self.file_name = file_name
 
     def get_all_words(self):
         all_words = {}
 
         x = [',', '.', '=', '!', '?', ';', ':', ' - ', ]
-        with open(self.file_name, encoding='utf-8') as file:
+        with open(*self.file_name, encoding='utf-8') as file:
             digits = file.read()
             for name in digits:
                 name = name.lower()
@@ -27,7 +27,7 @@ class WordsFinder:
         self.word = word
         for name, word in self.get_all_words().items():
             pos = word.index(self.word.lower())
-            all_words[self.file_name] = pos + 1
+            all_words[name] = pos + 1
         return all_words
 
     def count(self, word):
@@ -35,7 +35,7 @@ class WordsFinder:
         self.word = word
         for name, word in self.get_all_words().items():
             count_elem = word.count(self.word.lower())
-            all_words[self.file_name] = count_elem
+            all_words[name] = count_elem
         return all_words
 
 
