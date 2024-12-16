@@ -3,14 +3,14 @@ from pprint import pprint
 
 class WordsFinder:
 
-    def __init__(self, *file_name):
+    def __init__(self, file_name):
         self.file_name = file_name
 
     def get_all_words(self):
         all_words = {}
 
         x = [',', '.', '=', '!', '?', ';', ':', ' - ', ]
-        with open(*self.file_name, encoding='utf-8') as file:
+        with open(self.file_name, encoding='utf-8') as file:
             digits = file.read()
             for name in digits:
                 name = name.lower()
